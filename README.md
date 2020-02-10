@@ -1,5 +1,7 @@
 
-This is an unofficial fork of LaTeXTools which I am only maintaining for my own purposes since LaTeXTools is no longer developed. Feel free to use it, but please do so at your own risk.
+# About this Fork of `LaTeXTools`
+
+This is an unofficial fork of LaTeXTools which I am only maintaining for my own purposes since LaTeXTools is no longer developed. Feel free to use it, but please do so at your own risk. To install, first clone the repo to anywhere on you HD, then change to the new directory named `atom-latextools` and execute `git checkout co; apm link`.
 
 # LaTeXTools for Atom
 
