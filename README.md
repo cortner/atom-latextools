@@ -1,3 +1,6 @@
+
+This is an unofficial fork of LaTeXTools which I am only maintaining for my own purposes since LaTeXTools is no longer developed. Feel free to use it, but please do so at your own risk.
+
 # LaTeXTools for Atom
 
 by Ian Bacher and Marciano Siniscalchi

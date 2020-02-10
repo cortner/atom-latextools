@@ -223,11 +223,18 @@ class Builder extends LTool
           atom.notifications.addSuccess(
             "Build completed with 0 errors and #{warnings.length} warnings"
           )
+          @ltConsole.hide()
         else
           atom.notifications.addError(
             "Build completed with #{errors.length} errors and #{warnings.length} warnings"
           )
 
         # Jump to PDF
-        @ltConsole.addContent("Jumping to PDF...")
-        @viewer.jumpToPdf(te)
+        jumptopdf = atom.config.get("latextools.autoJumpToPDF")
+        if jumptopdf
+          @ltConsole.addContent("Jumping to PDF...")
+          @viewer.jumpToPdf(te)
+
+        # @ltConsole.addContent("testing... ")
+        # @ltConsole.addContent(jumptopdf)
+        # @ltConsole.show()
