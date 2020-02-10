@@ -151,12 +151,18 @@ class SnippetManager extends LTool
     te = atom.workspace.getActiveTextEditor()
 
     # First, check if there is a selection, and if so, add $..$ around it
-    if text =  te.getSelectedText()
-      text = text.replace(/\\/g, "\\\\")
-      range = te.getSelectedBufferRange()
-      te.setSelectedBufferRange(range, '')
+    range = te.getSelectedBufferRange()
+    text = te.getTextInBufferRange(range)
+    text = text.replace(/\\/g, "\\\\")
+    if text
       @snippetService.insertSnippet("\$#{text}\$")
       return
+    # if text =  te.getSelectedText()
+    #   text = text.replace(/\\/g, "\\\\")
+    #   range = te.getSelectedBufferRange()
+    #   te.setSelectedBufferRange(range, '')
+    #   @snippetService.insertSnippet("\$#{text}\$")
+    #   return
 
     cursor = te.getCursorBufferPosition()
     text = te.getTextInBufferRange([[cursor.row,0],[cursor.row,cursor.column+1]])
@@ -185,15 +191,21 @@ class SnippetManager extends LTool
 
     te = atom.workspace.getActiveTextEditor()
 
-    # First, check if there is a selection, and if so, add quotes around it
-    if text =  te.getSelectedText()
-      text = text.replace(/\\/g, "\\\\")
-      range = te.getSelectedBufferRange()
-      te.setSelectedBufferRange(range, '')
-      # Use snippet to leave selection on (same as ST)
+    # # First, check if there is a selection, and if so, add quotes around it
+    # if text =  te.getSelectedText()
+    #   text = text.replace(/\\/g, "\\\\")
+    #   range = te.getSelectedBufferRange()
+    #   te.setSelectedBufferRange(range, '')
+    #   # Use snippet to leave selection on (same as ST)
+    #   @snippetService.insertSnippet("#{left}${1:#{text}}#{right}")
+    #   return
+    range = te.getSelectedBufferRange()
+    text = te.getTextInBufferRange(range)
+    text = text.replace(/\\/g, "\\\\")
+    if text
       @snippetService.insertSnippet("#{left}${1:#{text}}#{right}")
       return
-
+      
     # Ensure there is no character preceding the quote
 
     cursor = te.getCursorBufferPosition()
